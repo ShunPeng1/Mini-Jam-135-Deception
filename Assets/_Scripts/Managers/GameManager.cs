@@ -1,18 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
+using Collections.StateMachine;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace _Scripts.Managers
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum GameStateEnum
     {
-        
+        NormalState,
+        PauseState,
+        GhostState,
+        InitState,
+        LoseState
     }
 
-    // Update is called once per frame
-    void Update()
+    public class GameManager : StateMachineManager<GameManager,GameStateEnum>
     {
-        
+        [SerializeField] private List<StateMachine<GameStateEnum>> _stateMachines;
+        [SerializeField] private StateMachine<GameStateEnum> _startStateMachine;
+        private void Start()
+        {
+            foreach (var stateMachine in _stateMachines)
+            {
+                AddState(stateMachine.MyStateEnum, stateMachine);
+            }
+
+            currentStateMachine = _startStateMachine;
+            StartCoroutine(currentStateMachine.OnEnterState());
+        }
+
     }
 }

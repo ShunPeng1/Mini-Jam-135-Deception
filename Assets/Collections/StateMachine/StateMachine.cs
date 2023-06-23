@@ -9,10 +9,10 @@ namespace Collections.StateMachine
     public abstract class StateMachine<TStateEnum> : MonoBehaviour where TStateEnum : Enum
     {
         [Header("State Machine ")]
-        [SerializeField] public TStateEnum _myStateEnum;
+        [SerializeField] public TStateEnum MyStateEnum;
 
-        protected List<Func<TStateEnum,object[],IEnumerator>> onEnterEvents = new();
-        protected List<Func<TStateEnum,object[],IEnumerator>> onExitEvents = new();
+        protected List<Func<TStateEnum,object[],IEnumerator>> OnEnterEvents = new();
+        protected List<Func<TStateEnum,object[],IEnumerator>> OnExitEvents = new();
     
         
         public enum StateEvent
@@ -23,7 +23,7 @@ namespace Collections.StateMachine
 
         public IEnumerator OnExitState(TStateEnum enterState = default, object [] parameters = null)
         {
-            foreach (var exitEnumerator in onExitEvents)
+            foreach (var exitEnumerator in OnExitEvents)
             {
                 yield return StartCoroutine(exitEnumerator.Invoke(enterState, parameters));
             }
@@ -31,7 +31,7 @@ namespace Collections.StateMachine
         
         public IEnumerator OnEnterState(TStateEnum exitState = default, object [] parameters = null)
         {
-            foreach (var enterEnumerator in onEnterEvents)
+            foreach (var enterEnumerator in OnEnterEvents)
             {
                 yield return StartCoroutine(enterEnumerator.Invoke(exitState, parameters));
             }
@@ -48,10 +48,10 @@ namespace Collections.StateMachine
             switch (stateEvent)
             {
                 case StateEvent.OnEnter:
-                    onEnterEvents.Add((stateEnum,_) => ConvertToIEnumerator(action, stateEnum));
+                    OnEnterEvents.Add((stateEnum,_) => ConvertToIEnumerator(action, stateEnum));
                     break;
                 case StateEvent.OnExit:
-                    onExitEvents.Add((stateEnum,_) => ConvertToIEnumerator(action, stateEnum));
+                    OnExitEvents.Add((stateEnum,_) => ConvertToIEnumerator(action, stateEnum));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(stateEvent), stateEvent, null);
@@ -64,10 +64,10 @@ namespace Collections.StateMachine
             switch (stateEvent)
             {
                 case StateEvent.OnEnter:
-                    onEnterEvents.Add((stateEnum, parameters) => ConvertToIEnumerator(action, stateEnum, parameters));
+                    OnEnterEvents.Add((stateEnum, parameters) => ConvertToIEnumerator(action, stateEnum, parameters));
                     break;
                 case StateEvent.OnExit:
-                    onExitEvents.Add((stateEnum, parameters) => ConvertToIEnumerator(action, stateEnum, parameters));
+                    OnExitEvents.Add((stateEnum, parameters) => ConvertToIEnumerator(action, stateEnum, parameters));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(stateEvent), stateEvent, null);
@@ -80,10 +80,10 @@ namespace Collections.StateMachine
             switch (stateEvent)
             {
                 case StateEvent.OnEnter:
-                    onEnterEvents.Add(coroutine);
+                    OnEnterEvents.Add(coroutine);
                     break;
                 case StateEvent.OnExit:
-                    onExitEvents.Add(coroutine);
+                    OnExitEvents.Add(coroutine);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(stateEvent), stateEvent, null);
@@ -95,10 +95,10 @@ namespace Collections.StateMachine
             switch (stateEvent)
             {
                 case StateEvent.OnEnter:
-                    onEnterEvents.Add((_,_) => ConvertToIEnumerator(tween));
+                    OnEnterEvents.Add((_,_) => ConvertToIEnumerator(tween));
                     break;
                 case StateEvent.OnExit:
-                    onExitEvents.Add((_,_) => ConvertToIEnumerator(tween));
+                    OnExitEvents.Add((_,_) => ConvertToIEnumerator(tween));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(stateEvent), stateEvent, null);

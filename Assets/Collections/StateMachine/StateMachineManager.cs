@@ -29,7 +29,7 @@ namespace Collections.StateMachine
             _states.Remove(stateEnum);
         }
 
-        public void SetState(TStateEnum stateEnum, object[] exitParameters = null, object[] enterParameters = null)
+        public void SetToState(TStateEnum stateEnum, object[] exitParameters = null, object[] enterParameters = null)
         {
             if (_states.TryGetValue(stateEnum, out StateMachine<TStateEnum> nextState))
             {
@@ -71,7 +71,7 @@ namespace Collections.StateMachine
         
         public TStateEnum GetState()
         {
-            return currentStateMachine._myStateEnum;
+            return currentStateMachine.MyStateEnum;
         }
 
         private IEnumerator SwitchingState()
@@ -89,8 +89,8 @@ namespace Collections.StateMachine
                 object[] exitParameters = info.Item2, enterParameters = info.Item3 ;
                 Debug.Log("State Machine Manager Change"+ currentStateMachine+ " To "+ nextState);
 
-                yield return StartCoroutine(currentStateMachine.OnExitState(nextState._myStateEnum,exitParameters));
-                yield return StartCoroutine(nextState.OnEnterState(currentStateMachine._myStateEnum,enterParameters));
+                yield return StartCoroutine(currentStateMachine.OnExitState(nextState.MyStateEnum,exitParameters));
+                yield return StartCoroutine(nextState.OnEnterState(currentStateMachine.MyStateEnum,enterParameters));
                 currentStateMachine = nextState;
             }
 
