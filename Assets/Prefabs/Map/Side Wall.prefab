@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3671052295500438298}
   - component: {fileID: 2642146014358149770}
   - component: {fileID: 418177350281139965}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Side Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}
   detailLevel: 2
   renderQueue: -1
   zTest: 4
