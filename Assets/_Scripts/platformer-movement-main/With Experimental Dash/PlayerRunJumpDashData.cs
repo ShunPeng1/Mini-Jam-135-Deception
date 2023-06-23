@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Player Data With Dash")] //Create a new playerData object by right clicking in the Project Menu then Create/Player/Player Data and drag onto the player
-public class PlayerDataWithDash : ScriptableObject
+[CreateAssetMenu(menuName = "Platformer/Player Run Jump Dash Data")] //Create a new playerData object by right clicking in the Project Menu then Create/Player/Player Data and drag onto the player
+public class PlayerRunJumpDashData : ScriptableObject
 {
 	[Header("Gravity")]
 	[HideInInspector] public float gravityStrength; //Downwards force (gravity) needed for the desired jumpHeight and jumpTimeToApex.
