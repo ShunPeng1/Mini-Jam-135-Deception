@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Collectibles;
 using _Scripts.Managers;
 using Collections.StateMachine;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     {
         DataManager.Instance.PlayerGhostMovement.gameObject.SetActive(true);
         DataManager.Instance.PlayerGhostMovement.enabled = true;
+
     }
     
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
@@ -61,7 +63,7 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     public void RevivePlayer()
     {
         
-        
+        DataManager.Instance.FleshCollectibleCount = 0;
         
         GameManager.Instance.SetToState(GameStateEnum.NormalState, null,  new []
         {

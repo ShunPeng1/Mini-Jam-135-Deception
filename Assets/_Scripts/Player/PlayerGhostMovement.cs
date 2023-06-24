@@ -1,3 +1,4 @@
+using _Scripts.Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

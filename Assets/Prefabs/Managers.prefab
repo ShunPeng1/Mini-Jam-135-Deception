@@ -182,7 +182,7 @@ MonoBehaviour:
   PlayerNormalMovement: {fileID: 0}
   PlayerGhostMovement: {fileID: 0}
   FleshCollectibleCount: 0
-  FleshCollectibleRequirement: 0
+  FleshCollectibleRequirement: 5
 --- !u!1 &4865566988220015791
 GameObject:
   m_ObjectHideFlags: 0

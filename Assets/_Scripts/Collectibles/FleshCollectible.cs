@@ -16,5 +16,9 @@ public class FleshCollectible : Collectible
 
     protected override void OnCollect(GameObject player) {
         
+        Debug.Log("Collected Flesh");
+        DataManager.Instance.FleshCollectibleCount++;
+        this.DestroyCollectible();
+        
     }
 }
