@@ -227,8 +227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4865566989181241907}
+  - component: {fileID: 4865566989739013710}
   m_Layer: 0
-  m_Name: Prefabs Manager
+  m_Name: Prefab Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,6 +250,20 @@ Transform:
   m_Father: {fileID: 4865566988220015784}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4865566989739013710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4865566989181241906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc83c49a43e84745b21d6b5843b152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fleshCollectibles:
+  - {fileID: 1611405052526614911, guid: c9b80e58ac2386444a92fce03c6d6727, type: 3}
 --- !u!1 &4865566989611950441
 GameObject:
   m_ObjectHideFlags: 0

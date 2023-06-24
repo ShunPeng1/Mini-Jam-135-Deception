@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6722281367474436460}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6722281368249889865}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6722281368364441933}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Back Wall Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6722281368448980503}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Front Wall Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6722281369027224896}
   - component: {fileID: 6722281369027224899}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,9 +249,9 @@ GameObject:
   - component: {fileID: 6722281369030675253}
   - component: {fileID: 6722281369030675248}
   - component: {fileID: 6722281369030675251}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
