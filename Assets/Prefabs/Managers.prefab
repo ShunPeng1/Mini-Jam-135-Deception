@@ -205,6 +205,7 @@ MonoBehaviour:
   _stateMachines:
   - {fileID: 1001123092}
   - {fileID: 1919113541}
+  _startStateMachine: {fileID: 1001123092}
 --- !u!1 &4865566989703179569
 GameObject:
   m_ObjectHideFlags: 0
