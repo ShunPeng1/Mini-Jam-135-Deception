@@ -229,6 +229,7 @@ public class PlayerNormalMovement : MonoBehaviour
 	    if (_wallLayer == (_wallLayer | (1 << other.gameObject.layer)))
 	    {
 		    _moveInput.x = -_moveInput.x;
+		    NormalStateMachine.OnWallCollide.Invoke();
 	    }
     }
 

@@ -52,15 +52,15 @@ public class LightActivatable : Activatable
         points[_rayCount + 1] = Vector2.zero; // triangle head
         _polygonCollider2D.points = points;
     }
-    
-    public override void Active()
+
+    protected override void Active()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(true);
     }
 
-    public override void Inactive()
+    protected override void Inactive()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

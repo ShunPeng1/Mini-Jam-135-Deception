@@ -4,14 +4,27 @@ namespace _Scripts.Obstacle
 {
     public abstract class Activatable : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        private bool _isActivate = false;
 
-        public abstract void Active();
-        public abstract void Inactive();
-        
+        public void SetActiveActivatable(bool willActive = false)
+        {
+            if (!_isActivate && willActive)
+            {
+                _isActivate = true;
+                Active();
+            }
+            else if (_isActivate&& !willActive )
+            {
+                _isActivate = false;
+                Inactive();
+            }
+        }
+        protected abstract void Active();
+        protected abstract void Inactive();
+
+        public bool IsActive()
+        {
+            return _isActivate;
+        }
     }
 }
