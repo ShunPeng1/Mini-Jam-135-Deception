@@ -18,7 +18,7 @@ public class PlayerDeathBehavior : MonoBehaviour
     {
         for (int i = 0; i < _fragmentCount; ++i)
         {
-            var fleshFragment = Instantiate(PrefabManager.Instance.GetRandomFlesh(), transform.position, Quaternion.identity);
+            var fleshFragment = Instantiate(ResourceManager.Instance.FleshCollectible, transform.position, Quaternion.identity);
             Rigidbody2D fragmentRigidbody = fleshFragment.GetComponent<Rigidbody2D>();
 
             // Generate a random direction in the upper hemisphere

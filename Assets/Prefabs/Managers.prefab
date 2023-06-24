@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 4865566989181241907}
   - component: {fileID: 4865566989739013710}
   m_Layer: 0
-  m_Name: Prefab Manager
+  m_Name: Resource Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,8 +262,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc83c49a43e84745b21d6b5843b152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fleshCollectibles:
-  - {fileID: 1611405052526614911, guid: c9b80e58ac2386444a92fce03c6d6727, type: 3}
+  _fleshSprites:
+  - {fileID: 21300000, guid: e6f9dfc6fd555664499ded844e1a0868, type: 3}
+  - {fileID: 21300000, guid: 1cc9ef9f41997c24b9c11fd7c6dcdcd9, type: 3}
+  - {fileID: 21300000, guid: 819ccb9b95c3d2245a053f9594839b94, type: 3}
+  - {fileID: 21300000, guid: a95e37fcf72e5a04fbd5a103c7f2dc4a, type: 3}
+  - {fileID: 21300000, guid: b3c8fe11a7818f946ac487e6aaa6e81a, type: 3}
+  - {fileID: 21300000, guid: 6a734bec181a93b4388457af0208ba24, type: 3}
+  - {fileID: 21300000, guid: ffc667f37db401340914bb3ab9efa635, type: 3}
+  - {fileID: 21300000, guid: be0923e765d9fa848b9e9c51a9e78472, type: 3}
+  - {fileID: 21300000, guid: 7b7bf9415d08ab442962448d941fdf8f, type: 3}
+  - {fileID: 21300000, guid: 03ac605004ad03b4f88f369255ca4d47, type: 3}
+  - {fileID: 21300000, guid: 92f800b2f135cc4418b5718003f20b0a, type: 3}
+  - {fileID: 21300000, guid: da1d627bddb770146a0358757b4afcb0, type: 3}
+  - {fileID: 21300000, guid: 24edd58c06baf8e499158265bfaf6d61, type: 3}
+  - {fileID: 21300000, guid: be502b79ab3943942be87d14f3d14b9b, type: 3}
+  FleshCollectible: {fileID: 1611405052526614911, guid: c9b80e58ac2386444a92fce03c6d6727, type: 3}
 --- !u!1 &4865566989611950441
 GameObject:
   m_ObjectHideFlags: 0
