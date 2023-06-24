@@ -10,7 +10,6 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
     public static Action OnWallCollide;
     public static Action OnKillPlayer;
     
-    private int _cycle = 0;
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
     private List<MapManager.ActivatablePair> _lastActivatablePairs = new ();
 
@@ -41,11 +40,12 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
     private void NextCycle()
     {
-        var nextActivatablePairs = MapManager.Instance.GenerateNextActivatable(_cycle);
+        var nextActivatablePairs = MapManager.Instance.GenerateNextActivatable();
 
         foreach (var pair in _lastActivatablePairs)
         {
             if(!_currentActivatablePairs.Contains(pair)) pair.SpikeActivatable.SetActiveActivatable(false);
+            if(!nextActivatablePairs.Contains(pair)) pair.LightActivatable.SetActiveActivatable(false);
         }
 
         foreach (var pair in nextActivatablePairs)
@@ -61,7 +61,7 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
         _lastActivatablePairs = _currentActivatablePairs;
         _currentActivatablePairs = nextActivatablePairs;
-        _cycle++;
+        
     }
 
     public void KillPlayer()
@@ -69,10 +69,16 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
         DataManager.Instance.PlayerNormalMovement.enabled = false;
         DataManager.Instance.PlayerNormalMovement.gameObject.SetActive(false);
         
+        
+        foreach (var pair in _currentActivatablePairs)
+        { 
+            pair.LightActivatable.SetActiveActivatable(false);
+        }
+        
         GameManager.Instance.SetToState(GameStateEnum.GhostState, null,  new []
         {
-            _lastActivatablePairs,
-            _currentActivatablePairs
+            _currentActivatablePairs, // swap last and current
+            _lastActivatablePairs
         });
     }
 }

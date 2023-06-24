@@ -169,6 +169,7 @@ public class PlayerGhostMovement : MonoBehaviour
         if (_wallLayer == (_wallLayer | (1 << other.gameObject.layer)))
         {
             _moveInput.x = -_moveInput.x;
+            GhostStateMachine.OnWallCollide.Invoke();
         }
     }
 

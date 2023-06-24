@@ -33,7 +33,8 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             return _sampleSize.Evaluate(cycle);
         }
     }
-    
+
+    private int _currentCycle = 0;
     [SerializeField] private List<ActivatableRegion> _activatableRegions;
     [SerializeField] private List<ActivatableSampleFrequency> _activatableSampleFrequencies;
     private List<ActivatablePair> _allActivatablePairs = new List<ActivatablePair>();
@@ -52,10 +53,10 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         }
     }
     
-    public List<ActivatablePair> GenerateNextActivatable(int cycle)
+    public List<ActivatablePair> GenerateNextActivatable()
     {
         List<ActivatablePair> result = new List<ActivatablePair>();
-        int willActivatableCount = GenerateActivatableCount(cycle);
+        int willActivatableCount = GenerateActivatableCount(_currentCycle);
         
 
         ActivatablePair[] willActivatablesArray = new ActivatablePair[_allActivatablePairs.Count - _activatableRegions.Count];
@@ -79,6 +80,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
            willActivatableCount--;
         }
 
+        _currentCycle++;
         return result;
     }
 

@@ -10,7 +10,6 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     public static Action OnWallCollide;
     public static Action OnRevivePlayer;
     
-    private int _cycle = 0;
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
     private List<MapManager.ActivatablePair> _lastActivatablePairs = new ();
 
@@ -37,7 +36,7 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     
     private void NextCycle()
     {
-        var nextActivatablePairs = MapManager.Instance.GenerateNextActivatable(_cycle);
+        var nextActivatablePairs = MapManager.Instance.GenerateNextActivatable();
 
         foreach (var pair in _lastActivatablePairs)
         {
@@ -57,15 +56,17 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
 
         _lastActivatablePairs = _currentActivatablePairs;
         _currentActivatablePairs = nextActivatablePairs;
-        _cycle++;
     }
     
     public void RevivePlayer()
     {
+        
+        
+        
         GameManager.Instance.SetToState(GameStateEnum.NormalState, null,  new []
         {
-            _lastActivatablePairs,
-            _currentActivatablePairs
+            _currentActivatablePairs, // swap current and last
+            _lastActivatablePairs
         });
     }
 }
