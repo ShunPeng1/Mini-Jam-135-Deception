@@ -56,36 +56,27 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     {
         List<ActivatablePair> result = new List<ActivatablePair>();
         int willActivatableCount = GenerateActivatableCount(cycle);
-        int wontActivatableCount = _allActivatablePairs.Count - willActivatableCount;
-
         
-        List<RandomBag<ActivatablePair>> randomBags = _activatableRegions.Select(region => new RandomBag<ActivatablePair>(region.Activatables, 1)).ToList();
 
+        ActivatablePair[] willActivatablesArray = new ActivatablePair[_allActivatablePairs.Count - _activatableRegions.Count];
+        
         int currentBagIndex = 0;
+        foreach (var region in _activatableRegions)
+        {
+            var bag = new RandomBag<ActivatablePair>(region.Activatables, 1);
+            
+            while (bag.RemainderCount > 1) //except 1
+            {
+                willActivatablesArray[currentBagIndex] = bag.PopRandomItem();
+                currentBagIndex++;
+            }
+        }
+        
+        var willActivatablesBag = new RandomBag<ActivatablePair>(willActivatablesArray, 1);
         while (willActivatableCount != 0)
         {
-            while (randomBags[currentBagIndex].RemainderCount == 1 && currentBagIndex < randomBags.Count - 1)
-            {
-                currentBagIndex ++;
-                wontActivatableCount--;
-            }
-
-            
-            // Get an item in bag?
-            float pBinomial = (float) willActivatableCount/(willActivatableCount + wontActivatableCount);
-            float randomPdf = Random.Range(0f, 1f);
-
-            var activatablePair = randomBags[currentBagIndex].PopRandomItem();
-            if (randomPdf <= pBinomial)
-            {
-                result.Add(activatablePair);
-                willActivatableCount --;
-            }
-            else
-            {
-                wontActivatableCount--;
-            }
-            
+           result.Add(willActivatablesBag.PopRandomItem());
+           willActivatableCount--;
         }
 
         return result;
