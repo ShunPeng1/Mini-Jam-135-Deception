@@ -15,7 +15,7 @@ public class FleshCollectible : Collectible
     [SerializeField] private AudioClip _collectSoundEffect;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private CircleCollider2D _circleCollider2D;
-    
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     
     [SerializeField] private LayerMask _ignoreLayer; // The layer to ignore collisions with
     [SerializeField] private float _ignoreCollisionDuration = 1f; // The duration to ignore collisions for
@@ -26,6 +26,8 @@ public class FleshCollectible : Collectible
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _circleCollider2D = GetComponent<CircleCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = ResourceManager.Instance.GetRandomFleshSprite();
 
         StartCoroutine(nameof(IgnoreLayerForTime));
     }
