@@ -18,6 +18,7 @@ public class LightActivatable : Activatable
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _light2D = GetComponent<Light2D>();
         InitializeTrigger();
+        Inactive();
     }
 
     private void InitializeTrigger()

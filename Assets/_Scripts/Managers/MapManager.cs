@@ -64,18 +64,19 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         int currentBagIndex = 0;
         while (willActivatableCount != 0)
         {
-            while (randomBags[currentBagIndex].RemainderCount == 1)
+            while (randomBags[currentBagIndex].RemainderCount == 1 && currentBagIndex < randomBags.Count - 1)
             {
                 currentBagIndex ++;
                 wontActivatableCount--;
             }
+
             
             // Get an item in bag?
             float pBinomial = (float) willActivatableCount/(willActivatableCount + wontActivatableCount);
             float randomPdf = Random.Range(0f, 1f);
 
             var activatablePair = randomBags[currentBagIndex].PopRandomItem();
-            if (pBinomial < randomPdf)
+            if (randomPdf <= pBinomial)
             {
                 result.Add(activatablePair);
                 willActivatableCount --;
@@ -84,6 +85,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             {
                 wontActivatableCount--;
             }
+            
         }
 
         return result;
@@ -97,7 +99,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         foreach (var activatableSampleFrequency in _activatableSampleFrequencies)
         {
             float currentCdf = (float) activatableSampleFrequency.GetSampleSize(cycle) / totalSample;
-            if (randomCdf < currentCdf)
+            if (randomCdf <= currentCdf)
             {
                 return activatableSampleFrequency.ActivatableCount;
             }

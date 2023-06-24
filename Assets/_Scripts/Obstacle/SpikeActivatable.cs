@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class SpikeActivatable : Activatable
 {
+    private void Start()
+    {
+        Inactive();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         

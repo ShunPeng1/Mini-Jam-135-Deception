@@ -8,7 +8,7 @@ namespace Collections.StateMachine
 {
     public class StateMachineManager<TMonoBehaviour,TStateEnum> : SingletonMonoBehaviour<TMonoBehaviour> where TStateEnum : Enum where TMonoBehaviour : SingletonMonoBehaviour<TMonoBehaviour>
     {
-        protected StateMachine<TStateEnum> currentStateMachine;
+        public StateMachine<TStateEnum> CurrentStateMachine;
         private Dictionary<TStateEnum, StateMachine<TStateEnum>> _states = new ();
 
         private Queue<(StateMachine<TStateEnum>, object[], object[])> _changingStateQueue = new ();
@@ -71,7 +71,7 @@ namespace Collections.StateMachine
         
         public TStateEnum GetState()
         {
-            return currentStateMachine.MyStateEnum;
+            return CurrentStateMachine.MyStateEnum;
         }
 
         private IEnumerator SwitchingState()
@@ -87,11 +87,11 @@ namespace Collections.StateMachine
                 var info = _changingStateQueue.Dequeue();
                 var nextState = info.Item1;
                 object[] exitParameters = info.Item2, enterParameters = info.Item3 ;
-                Debug.Log("State Machine Manager Change"+ currentStateMachine+ " To "+ nextState);
+                Debug.Log("State Machine Manager Change"+ CurrentStateMachine+ " To "+ nextState);
 
-                yield return StartCoroutine(currentStateMachine.OnExitState(nextState.MyStateEnum,exitParameters));
-                yield return StartCoroutine(nextState.OnEnterState(currentStateMachine.MyStateEnum,enterParameters));
-                currentStateMachine = nextState;
+                yield return StartCoroutine(CurrentStateMachine.OnExitState(nextState.MyStateEnum,exitParameters));
+                yield return StartCoroutine(nextState.OnEnterState(CurrentStateMachine.MyStateEnum,enterParameters));
+                CurrentStateMachine = nextState;
             }
 
             _isChangingState = false;

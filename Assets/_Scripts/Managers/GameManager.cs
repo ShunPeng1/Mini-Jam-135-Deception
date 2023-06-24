@@ -24,8 +24,8 @@ namespace _Scripts.Managers
                 AddState(stateMachine.MyStateEnum, stateMachine);
             }
 
-            currentStateMachine = _startStateMachine;
-            StartCoroutine(currentStateMachine.OnEnterState());
+            CurrentStateMachine = _startStateMachine;
+            StartCoroutine(CurrentStateMachine.OnEnterState());
         }
 
     }
