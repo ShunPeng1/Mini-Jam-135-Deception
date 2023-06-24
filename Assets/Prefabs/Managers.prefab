@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 11356721}
   - component: {fileID: 11356722}
   m_Layer: 0
-  m_Name: Ghostl State Machine
+  m_Name: Ghost State Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,121 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyStateEnum: 2
---- !u!1 &994631672
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 994631673}
-  - component: {fileID: 994631674}
-  m_Layer: 0
-  m_Name: Map Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &994631673
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994631672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4865566988220015784}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &994631674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994631672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3162fd8ab1ddeaf49bb8005700fc74e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activatableRegions:
-  - Activatables:
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-  - Activatables:
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-  - Activatables:
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-    - LightActivatable: {fileID: 0}
-      SpikeActivatable: {fileID: 0}
-  _activatableSampleFrequencies:
-  - ActivatableCount: 3
-    _sampleSize:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - ActivatableCount: 2
-    _sampleSize:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
 --- !u!1 &1001123090
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4865566988220015784}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1592482853176740051
 MonoBehaviour:
@@ -296,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNormalMovement: {fileID: 0}
   PlayerGhostMovement: {fileID: 0}
+  FleshCollectibleCount: 0
+  FleshCollectibleRequirement: 0
 --- !u!1 &4865566988220015791
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +214,6 @@ Transform:
   - {fileID: 4865566989611950442}
   - {fileID: 4865566989181241907}
   - {fileID: 4865566989703179570}
-  - {fileID: 994631673}
   - {fileID: 5138085164054532574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
