@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Viet Ghost Scene");
+        SceneManager.LoadScene("Thuan Testing");
     }
     public void Exit()
     {
