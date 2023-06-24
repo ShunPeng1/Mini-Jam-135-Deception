@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Managers;
 using Collections.StateMachine;
-using UnityEngine;using UnityUtilities;
+using UnityEngine;
 
-public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
+public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
 {
     public static Action OnWallCollide;
-    public static Action OnKillPlayer;
+    public static Action OnRevivePlayer;
     
     private int _cycle = 0;
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
@@ -17,20 +17,16 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
     private void Start()
     {
         OnWallCollide += NextCycle;
-        OnKillPlayer += KillPlayer;
-        NextCycle();
-        
         AddToFunctionQueue(InitActivatable, StateEvent.OnEnter);
-        AddToFunctionQueue(InitNormalPlayer, StateEvent.OnEnter);
-
+        AddToFunctionQueue(InitGhostPlayer, StateEvent.OnEnter);
     }
 
-    void InitNormalPlayer(GameStateEnum newState, object [] enterParameters)
+    void InitGhostPlayer(GameStateEnum newState, object [] enterParameters)
     {
-        DataManager.Instance.PlayerNormalMovement.gameObject.SetActive(true);
-        DataManager.Instance.PlayerNormalMovement.enabled = true;
+        DataManager.Instance.PlayerGhostMovement.gameObject.SetActive(true);
+        DataManager.Instance.PlayerGhostMovement.enabled = true;
     }
-
+    
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
     {
         if (enterParameters == null) return;
@@ -38,38 +34,35 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
         _lastActivatablePairs = enterParameters[0] as List<MapManager.ActivatablePair>;
         _currentActivatablePairs = enterParameters[1] as List<MapManager.ActivatablePair>;
     }
-
+    
     private void NextCycle()
     {
         var nextActivatablePairs = MapManager.Instance.GenerateNextActivatable(_cycle);
 
         foreach (var pair in _lastActivatablePairs)
         {
-            if(!_currentActivatablePairs.Contains(pair)) pair.SpikeActivatable.SetActiveActivatable(false);
+            if(!_currentActivatablePairs.Contains(pair)) pair.LightActivatable.SetActiveActivatable(false);
         }
 
         foreach (var pair in nextActivatablePairs)
         {
-            pair.LightActivatable.SetActiveActivatable(true);
+            pair.SpikeActivatable.SetActiveActivatable(true);
         }
         
         foreach (var pair in _currentActivatablePairs)
         {
-            if(!nextActivatablePairs.Contains(pair)) pair.LightActivatable.SetActiveActivatable(false);
-            pair.SpikeActivatable.SetActiveActivatable(true);
+            if(!nextActivatablePairs.Contains(pair)) pair.SpikeActivatable.SetActiveActivatable(false);
+            pair.LightActivatable.SetActiveActivatable(true);
         }
 
         _lastActivatablePairs = _currentActivatablePairs;
         _currentActivatablePairs = nextActivatablePairs;
         _cycle++;
     }
-
-    public void KillPlayer()
+    
+    public void RevivePlayer()
     {
-        DataManager.Instance.PlayerNormalMovement.enabled = false;
-        DataManager.Instance.PlayerNormalMovement.gameObject.SetActive(false);
-        
-        GameManager.Instance.SetToState(GameStateEnum.GhostState, null,  new []
+        GameManager.Instance.SetToState(GameStateEnum.NormalState, null,  new []
         {
             _lastActivatablePairs,
             _currentActivatablePairs

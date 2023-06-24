@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &11356720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11356721}
+  - component: {fileID: 11356722}
+  m_Layer: 0
+  m_Name: Ghostl State Machine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &11356721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11356720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4865566989611950442}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11356722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11356720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b146e448fa7c93478673fef407bf6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyStateEnum: 2
 --- !u!1 &994631672
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +250,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyStateEnum: 0
+--- !u!1 &4271947806764446118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5138085164054532574}
+  - component: {fileID: 1592482853176740051}
+  m_Layer: 0
+  m_Name: Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5138085164054532574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271947806764446118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4865566988220015784}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592482853176740051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271947806764446118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243fb83108661124e95fec695e2b4edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNormalMovement: {fileID: 0}
+  PlayerGhostMovement: {fileID: 0}
 --- !u!1 &4865566988220015791
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +328,7 @@ Transform:
   - {fileID: 4865566989181241907}
   - {fileID: 4865566989703179570}
   - {fileID: 994631673}
+  - {fileID: 5138085164054532574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,6 +394,7 @@ Transform:
   m_Children:
   - {fileID: 1001123091}
   - {fileID: 1919113540}
+  - {fileID: 11356721}
   m_Father: {fileID: 4865566988220015784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -317,10 +410,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57a34ab36574294a9bd21f6188a0178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStateMachine: {fileID: 0}
   _maxHistoryLength: 10
   _stateMachines:
   - {fileID: 1001123092}
   - {fileID: 1919113541}
+  - {fileID: 11356722}
   _startStateMachine: {fileID: 1001123092}
 --- !u!1 &4865566989703179569
 GameObject:

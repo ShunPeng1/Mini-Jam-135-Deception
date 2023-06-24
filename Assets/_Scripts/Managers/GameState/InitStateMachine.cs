@@ -8,19 +8,16 @@ using UnityEngine;
 
 public class InitStateMachine : StateMachine<InitStateMachine,GameStateEnum>
 {
-    private PlayerNormalMovement _playerNormalMovement;
     
     // Start is called before the first frame update
     void Awake()
     {
         AddToFunctionQueue(Initialize, StateEvent.OnEnter);
-        AddToFunctionQueue(EndInitialize, StateEvent.OnExit);
     }
 
     void Initialize(GameStateEnum oldState, object [] enterParameters)
     {
-        _playerNormalMovement = FindObjectOfType<PlayerNormalMovement>();
-        _playerNormalMovement.enabled = false;
+        DataManager.Instance.PlayerNormalMovement.enabled = false;
     }
 
     public void Update()
@@ -33,9 +30,5 @@ public class InitStateMachine : StateMachine<InitStateMachine,GameStateEnum>
         }
     }
     
-    void EndInitialize(GameStateEnum newState, object [] enterParameters)
-    {
-        _playerNormalMovement.enabled = true;
-    }
     
 }

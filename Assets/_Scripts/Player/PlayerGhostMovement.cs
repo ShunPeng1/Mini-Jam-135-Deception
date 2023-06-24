@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostMovement : MonoBehaviour
+public class PlayerGhostMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it

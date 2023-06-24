@@ -68,7 +68,7 @@ public class LightActivatable : Activatable
     {
         if (_triggerLayerMask == (_triggerLayerMask | (1 << other.gameObject.layer)))
         {
-            
+            Debug.Log("Kill Player");
         }
     }
 }

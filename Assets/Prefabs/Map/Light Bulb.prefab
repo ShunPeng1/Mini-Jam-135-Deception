@@ -212,4 +212,4 @@ MonoBehaviour:
     m_Bits: 896
   _triggerLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
