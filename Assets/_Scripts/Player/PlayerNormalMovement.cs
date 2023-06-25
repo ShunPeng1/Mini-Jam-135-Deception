@@ -39,7 +39,7 @@ public class PlayerNormalMovement : MonoBehaviour
 	private float _wallJumpStartTime;
 	private int _lastWallJumpDir;
 
-	public Vector2 _moveInput;
+	public Vector2 MoveInput;
 	public float LastPressedJumpTime { get; private set; }
 
 	//Set all of these up in the inspector
@@ -60,12 +60,13 @@ public class PlayerNormalMovement : MonoBehaviour
     private void Awake()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
+		NormalStateMachine.OnKillPlayer += StopRun;
 	}
 
 	private void Start()
 	{
 		SetGravityScale(runJumpData.gravityScale);
-		_moveInput.x = 1;
+		MoveInput.x = 1;
 		IsFacingRight = true;
 	}
 
@@ -82,8 +83,8 @@ public class PlayerNormalMovement : MonoBehaviour
 
 		#region INPUT HANDLER
 		
-		if (_moveInput.x != 0)
-			CheckDirectionToFace(_moveInput.x > 0);
+		if (MoveInput.x != 0)
+			CheckDirectionToFace(MoveInput.x > 0);
 
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
@@ -166,7 +167,7 @@ public class PlayerNormalMovement : MonoBehaviour
 		#endregion
 
 		#region SLIDE CHECKS
-		if (CanSlide() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0)))
+		if (CanSlide() && ((LastOnWallLeftTime > 0 && MoveInput.x < 0) || (LastOnWallRightTime > 0 && MoveInput.x > 0)))
 			IsSliding = true;
 		else
 			IsSliding = false;
@@ -178,7 +179,7 @@ public class PlayerNormalMovement : MonoBehaviour
 		{
 			SetGravityScale(0);
 		}
-		else if (_rigidbody2D.velocity.y < 0 && _moveInput.y < 0)
+		else if (_rigidbody2D.velocity.y < 0 && MoveInput.y < 0)
 		{
 			//Much higher gravity if holding down
 			SetGravityScale(runJumpData.gravityScale * runJumpData.fastFallGravityMult);
@@ -208,13 +209,10 @@ public class PlayerNormalMovement : MonoBehaviour
 			SetGravityScale(runJumpData.gravityScale);
 		}
 		#endregion
-
 		
     }
 
-	
-
-    private void FixedUpdate()
+	private void FixedUpdate()
 	{
 		//Handle Run
 		if (IsWallJumping)
@@ -227,12 +225,19 @@ public class PlayerNormalMovement : MonoBehaviour
 			Slide();
     }
 
+	private void StopRun()
+	{
+		this.enabled = false;
+		MoveInput = Vector2.zero; 
+		_rigidbody2D.velocity = Vector2.zero;
+	}
+	
     private void OnCollisionEnter2D(Collision2D other)
     {
 	    // Check if the other object's layer is included in the LayerMask
 	    if (_wallLayer == (_wallLayer | (1 << other.gameObject.layer)))
 	    {
-		    _moveInput.x = -_moveInput.x;
+		    MoveInput.x = -MoveInput.x;
 		    NormalStateMachine.OnWallCollide.Invoke();
 	    }
     }
@@ -263,7 +268,7 @@ public class PlayerNormalMovement : MonoBehaviour
     private void Run(float lerpAmount)
 	{
 		//Calculate the direction we want to move in and our desired velocity
-		float targetSpeed = _moveInput.x * runJumpData.runMaxSpeed;
+		float targetSpeed = MoveInput.x * runJumpData.runMaxSpeed;
 		//We can reduce are control using Lerp() this smooths changes to are direction and speed
 		targetSpeed = Mathf.Lerp(_rigidbody2D.velocity.x, targetSpeed, lerpAmount);
 

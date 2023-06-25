@@ -66,10 +66,6 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
     public void KillPlayer()
     {
-        DataManager.Instance.PlayerNormalMovement.enabled = false;
-        DataManager.Instance.PlayerNormalMovement.gameObject.SetActive(false);
-        
-        
         foreach (var pair in _currentActivatablePairs)
         { 
             pair.LightActivatable.SetActiveActivatable(false);
