@@ -1,21 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityUtilities;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void StartGame()
     {
         SceneManager.LoadScene("Thuan Testing");
