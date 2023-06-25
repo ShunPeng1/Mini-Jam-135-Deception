@@ -30,6 +30,6 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     }
     public void PlayButtonSound()
     {
-        SoundManager.instance.PlaySound(ButtonClip);
+        SoundManager.Instance.PlaySound(ButtonClip);
     }
 }

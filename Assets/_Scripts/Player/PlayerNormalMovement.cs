@@ -10,9 +10,7 @@ public class PlayerNormalMovement : MonoBehaviour
 
 	//HOW TO: to add the scriptable object, right-click in the project window -> create -> Player Data
 	//Next, drag it into the slot in playerMovement on your player
-
-	[SerializeField] private AudioClip jumpsfx;
-
+	
 	public PlayerRunJumpData runJumpData;
 
 	#region Variables
@@ -358,7 +356,7 @@ public class PlayerNormalMovement : MonoBehaviour
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;
 		LastOnGroundTime = 0;
-        SoundManager.instance.PlaySound(jumpsfx);
+		
         #region Perform Jump
         //We increase the force applied if we are falling
         //This means we'll always feel like we jump the same amount 
@@ -379,7 +377,7 @@ public class PlayerNormalMovement : MonoBehaviour
 		LastOnGroundTime = 0;
 		LastOnWallRightTime = 0;
 		LastOnWallLeftTime = 0;
-        SoundManager.instance.PlaySound(jumpsfx);
+		
         #region Perform Wall Jump
         Vector2 force = new Vector2(runJumpData.wallJumpForce.x, runJumpData.wallJumpForce.y);
 		force.x *= dir; //apply force in opposite direction of wall

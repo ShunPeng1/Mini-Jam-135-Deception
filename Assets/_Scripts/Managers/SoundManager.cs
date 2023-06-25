@@ -5,16 +5,11 @@ using UnityUtilities;
 
 public class SoundManager : SingletonMonoBehaviour<SoundManager> 
 {
-    public static SoundManager instance;
-
     [SerializeField] 
     private AudioSource BGM_AudioSource;
     [SerializeField]
     private AudioSource SFX_AudioSource;
-    private void Awake()
-    {
-        instance = this;
-    }
+    
     public void PlaySound(AudioClip clip)
     {
         SFX_AudioSource.PlayOneShot(clip);

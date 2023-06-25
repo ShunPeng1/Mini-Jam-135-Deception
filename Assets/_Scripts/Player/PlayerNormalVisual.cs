@@ -17,6 +17,10 @@ public class PlayerNormalVisual : MonoBehaviour
     [SerializeField] private float _explosionForce = 15f; // Magnitude of the explosion force
     [SerializeField] private Vector3 _explosionOffsetPosition = Vector3.up;
     
+    [Header("Audio")]
+    [SerializeField] private AudioClip _jumpSfx;
+
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,8 +39,13 @@ public class PlayerNormalVisual : MonoBehaviour
     
     private void MovementAnimation()
     {
-        if(_playerNormalMovement.LastPressedJumpTime == 0) _animator.SetTrigger(Jumping);
+        if (_playerNormalMovement.LastPressedJumpTime == 0)
+        {
+            _animator.SetTrigger(Jumping);
+            SoundManager.Instance.PlaySound(_jumpSfx);
+        }
         _animator.SetFloat(RunSpeed, Mathf.Abs(_playerNormalMovement.MoveInput.x));
+        
     }
 
     private void DeadAnimation()

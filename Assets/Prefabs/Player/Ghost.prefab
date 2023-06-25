@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4758ed545d3638949adcfb872c3e8a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpSfx: {fileID: 8300000, guid: ad9e66e10f9f2b946923c1ebb1bdbcf5, type: 3}
 --- !u!114 &5714084663450461986
 MonoBehaviour:
   m_ObjectHideFlags: 0

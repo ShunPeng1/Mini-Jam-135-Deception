@@ -14,7 +14,9 @@ public class PlayerGhostVisual : MonoBehaviour
     private static readonly int IsDead = Animator.StringToHash("IsDead");
     private static readonly int IsHurt = Animator.StringToHash("IsHurt");
     
-    
+    [Header("Audio")]
+    [SerializeField] private AudioClip _jumpSfx;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,6 +47,9 @@ public class PlayerGhostVisual : MonoBehaviour
     {
         _animator.SetFloat(RunSpeed, Mathf.Abs(_playerGhostMovement._moveInput.x));
         _animator.SetBool(IsHurt, _playerGhostHealth.IsHurt);
+        
+        if (_playerGhostMovement.LastPressedJumpTime == 0) 
+            SoundManager.Instance.PlaySound(_jumpSfx);
     }
 
     private void DeadAnimation()
