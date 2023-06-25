@@ -698,7 +698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonClip: {fileID: 8300000, guid: 3d23393bf82355f44b63a2af8163d2cb, type: 3}
-  BGMTheme: {fileID: 8300000, guid: eaa31b0bccfdd2f4596b87ccacf77ede, type: 3}
 --- !u!1 &1002909493
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +972,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: eaa31b0bccfdd2f4596b87ccacf77ede, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
