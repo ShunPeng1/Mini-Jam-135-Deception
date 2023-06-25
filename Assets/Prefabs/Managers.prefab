@@ -407,6 +407,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 24edd58c06baf8e499158265bfaf6d61, type: 3}
   - {fileID: 21300000, guid: be502b79ab3943942be87d14f3d14b9b, type: 3}
   FleshCollectible: {fileID: 1611405052526614911, guid: c9b80e58ac2386444a92fce03c6d6727, type: 3}
+  ScrollCollectible: {fileID: 5343761735029183832, guid: 4879e5efef10eb646be06fd30ec657b7, type: 3}
 --- !u!1 &4865566989611950441
 GameObject:
   m_ObjectHideFlags: 0

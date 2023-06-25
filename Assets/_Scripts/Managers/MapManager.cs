@@ -37,7 +37,9 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     private int _currentCycle = 0;
     [SerializeField] private List<ActivatableRegion> _activatableRegions;
     [SerializeField] private List<ActivatableSampleFrequency> _activatableSampleFrequencies;
-    private List<ActivatablePair> _allActivatablePairs = new List<ActivatablePair>();
+    [SerializeField] private Transform [] _scrollSpawnPoints;
+    private RandomBag<Transform> _scrollSpawnPointBag;
+    private List<ActivatablePair> _allActivatablePairs = new ();
     
     private void OnValidate()
     {
@@ -51,6 +53,19 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
                 }
             }
         }
+    }
+
+    private void Start()
+    {
+        DataManager.Instance.OnScrollChange += SpawnScroll;
+        _scrollSpawnPointBag = new RandomBag<Transform>(_scrollSpawnPoints, 1);
+    }
+
+    private void SpawnScroll()
+    {
+        Vector3 position = _scrollSpawnPointBag.PopRandomItem().position;
+        Instantiate(ResourceManager.Instance.ScrollCollectible,position, Quaternion.identity);
+        
     }
     
     public List<ActivatablePair> GenerateNextActivatable()

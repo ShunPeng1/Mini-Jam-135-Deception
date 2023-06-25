@@ -16,7 +16,7 @@ namespace _Scripts.Collectible
         {
             if (_isCollected) return;
             
-            if (col.CompareTag(_collectorTag))
+            if (_collectorTag == col.tag)
             {
                 OnCollect(col.gameObject);
                 _isCollected = true;

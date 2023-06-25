@@ -12,6 +12,8 @@ public class ResourceManager : SingletonMonoBehaviour<ResourceManager>
     public FleshCollectible FleshCollectible;
     private RandomBag<Sprite> _fleshSpriteBag;
 
+    public ScrollCollectible ScrollCollectible;
+    
     private void Awake()
     {
         _fleshSpriteBag = new RandomBag<Sprite>(_fleshSprites, 1);
