@@ -11,6 +11,8 @@ public class PlayerNormalMovement : MonoBehaviour
 	//HOW TO: to add the scriptable object, right-click in the project window -> create -> Player Data
 	//Next, drag it into the slot in playerMovement on your player
 
+	[SerializeField] private AudioClip jumpsfx;
+
 	public PlayerRunJumpData runJumpData;
 
 	#region Variables
@@ -356,17 +358,18 @@ public class PlayerNormalMovement : MonoBehaviour
 		//Ensures we can't call Jump multiple times from one press
 		LastPressedJumpTime = 0;
 		LastOnGroundTime = 0;
-
-		#region Perform Jump
-		//We increase the force applied if we are falling
-		//This means we'll always feel like we jump the same amount 
-		//(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
-		float force = runJumpData.jumpForce;
+        SoundManager.instance.PlaySound(jumpsfx);
+        #region Perform Jump
+        //We increase the force applied if we are falling
+        //This means we'll always feel like we jump the same amount 
+        //(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
+        float force = runJumpData.jumpForce;
 		if (_rigidbody2D.velocity.y < 0)
 			force -= _rigidbody2D.velocity.y;
 
 		_rigidbody2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 		#endregion
+		
 	}
 
 	private void WallJump(int dir)
@@ -376,9 +379,9 @@ public class PlayerNormalMovement : MonoBehaviour
 		LastOnGroundTime = 0;
 		LastOnWallRightTime = 0;
 		LastOnWallLeftTime = 0;
-
-		#region Perform Wall Jump
-		Vector2 force = new Vector2(runJumpData.wallJumpForce.x, runJumpData.wallJumpForce.y);
+        SoundManager.instance.PlaySound(jumpsfx);
+        #region Perform Wall Jump
+        Vector2 force = new Vector2(runJumpData.wallJumpForce.x, runJumpData.wallJumpForce.y);
 		force.x *= dir; //apply force in opposite direction of wall
 
 		if (Mathf.Sign(_rigidbody2D.velocity.x) != Mathf.Sign(force.x))
@@ -390,8 +393,9 @@ public class PlayerNormalMovement : MonoBehaviour
 		//Unlike in the run we want to use the Impulse mode.
 		//The default mode will apply are force instantly ignoring masss
 		_rigidbody2D.AddForce(force, ForceMode2D.Impulse);
-		#endregion
-	}
+        #endregion
+        
+    }
 	#endregion
 
 	#region OTHER MOVEMENT METHODS
