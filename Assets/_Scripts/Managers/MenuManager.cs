@@ -7,6 +7,11 @@ using UnityUtilities;
 
 public class MenuManager : SingletonMonoBehaviour<MenuManager>
 {
+    [SerializeField] private AudioClip ButtonClip, BGMTheme;
+    private void Start()
+    {
+        SoundManager.instance.PlayBGM(BGMTheme);
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("Thuan Testing");
@@ -22,5 +27,9 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     public void BackToMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+    public void PlayButtonSound()
+    {
+        SoundManager.instance.PlaySound(ButtonClip);
     }
 }
