@@ -68,7 +68,15 @@ public class LightActivatable : Activatable
     {
         if (_triggerLayerMask == (_triggerLayerMask | (1 << other.gameObject.layer)))
         {
-            Debug.Log("Kill Player");
+            other.GetComponent<PlayerGhostHealth>().EnterLight();
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (_triggerLayerMask == (_triggerLayerMask | (1 << other.gameObject.layer)))
+        {
+            other.GetComponent<PlayerGhostHealth>().ExitLight();
         }
     }
 }

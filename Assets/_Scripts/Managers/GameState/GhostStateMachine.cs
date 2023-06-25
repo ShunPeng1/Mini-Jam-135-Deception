@@ -10,13 +10,15 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
 {
     public static Action OnWallCollide;
     public static Action OnRevivePlayer;
-    
+    public static Action OnKillPlayer;
+
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
     private List<MapManager.ActivatablePair> _lastActivatablePairs = new ();
 
     private void Start()
     {
         OnWallCollide += NextCycle;
+        OnRevivePlayer += RevivePlayer;
         AddToFunctionQueue(InitActivatable, StateEvent.OnEnter);
         AddToFunctionQueue(InitGhostPlayer, StateEvent.OnEnter);
     }
@@ -62,7 +64,6 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     
     public void RevivePlayer()
     {
-        
         DataManager.Instance.FleshCollectibleCount = 0;
         
         GameManager.Instance.SetToState(GameStateEnum.NormalState, null,  new []

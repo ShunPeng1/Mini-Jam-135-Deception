@@ -40,7 +40,7 @@ public class PlayerGhostMovement : MonoBehaviour
     private float _wallJumpStartTime;
     private int _lastWallJumpDir;
 
-    private Vector2 _moveInput;
+    public Vector2 _moveInput;
     public float LastPressedJumpTime { get; private set; }
 
     //Set all of these up in the inspector
