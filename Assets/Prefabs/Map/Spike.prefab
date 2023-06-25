@@ -129,7 +129,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   _goUpDuration: 0.3
-  _goDownDuration: 0.3
+  _goDownDuration: 0.1
   _goUpEase: 0
   _goDownEase: 0
 --- !u!1 &8302377160186590956
