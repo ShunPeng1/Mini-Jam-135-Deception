@@ -16,7 +16,6 @@ public class PlayerNormalMovement : MonoBehaviour
 	#region Variables
 	//Components
 	private Rigidbody2D _rigidbody2D;
-	private Animator _animator;
 
 	//Variables control the various actions the player can perform at any time.
 	//These are fields which can are public allowing for other sctipts to read them
@@ -40,7 +39,7 @@ public class PlayerNormalMovement : MonoBehaviour
 	private float _wallJumpStartTime;
 	private int _lastWallJumpDir;
 
-	private Vector2 _moveInput;
+	public Vector2 _moveInput;
 	public float LastPressedJumpTime { get; private set; }
 
 	//Set all of these up in the inspector
@@ -56,17 +55,11 @@ public class PlayerNormalMovement : MonoBehaviour
     [Header("Layers & Tags")]
 	[SerializeField] private LayerMask _groundLayer, _wallLayer;
 
-    [Header("Animation")]
-    private static readonly int Jumping = Animator.StringToHash("IsJumping");
-
-    private static readonly int RunSpeed = Animator.StringToHash("RunSpeed");
-
     #endregion
 
     private void Awake()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		_animator = GetComponent<Animator>();
 	}
 
 	private void Start()
@@ -216,17 +209,10 @@ public class PlayerNormalMovement : MonoBehaviour
 		}
 		#endregion
 
-		#region VISUALIZE
-		VisualizeAnimation();
-
-		#endregion
+		
     }
 
-	private void VisualizeAnimation()
-	{
-		if(LastPressedJumpTime == 0) _animator.SetTrigger(Jumping);
-		_animator.SetFloat(RunSpeed, Mathf.Abs(_moveInput.x));
-	}
+	
 
     private void FixedUpdate()
 	{
