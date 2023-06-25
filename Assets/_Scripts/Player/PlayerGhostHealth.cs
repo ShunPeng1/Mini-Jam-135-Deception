@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerGhostHealth : MonoBehaviour
 {
+   
     
     [SerializeField] private float _maxHealthTimer = 1f;
     private float _currentHealthTimer;

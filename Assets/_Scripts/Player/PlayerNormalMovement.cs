@@ -16,7 +16,8 @@ public class PlayerNormalMovement : MonoBehaviour
 	#region Variables
 	//Components
 	private Rigidbody2D _rigidbody2D;
-
+	private Collider2D _collider2D;
+	
 	//Variables control the various actions the player can perform at any time.
 	//These are fields which can are public allowing for other sctipts to read them
 	//but can only be privately written to.
@@ -60,6 +61,7 @@ public class PlayerNormalMovement : MonoBehaviour
     private void Awake()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
+		_collider2D = GetComponent<Collider2D>();
 		NormalStateMachine.OnKillPlayer += StopRun;
 	}
 
@@ -230,6 +232,7 @@ public class PlayerNormalMovement : MonoBehaviour
 		this.enabled = false;
 		MoveInput = Vector2.zero; 
 		_rigidbody2D.velocity = Vector2.zero;
+		
 	}
 	
     private void OnCollisionEnter2D(Collision2D other)

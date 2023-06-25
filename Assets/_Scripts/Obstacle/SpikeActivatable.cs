@@ -18,7 +18,8 @@ public class SpikeActivatable : Activatable
     {
         if (_triggerLayerMask == (_triggerLayerMask | (1 << other.gameObject.layer)))
         {
-            NormalStateMachine.OnKillPlayer.Invoke();
+            if(GameManager.Instance.CurrentStateMachine.MyStateEnum == GameStateEnum.NormalState) 
+                NormalStateMachine.OnKillPlayer.Invoke();
         }
     }
 

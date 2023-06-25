@@ -58,7 +58,6 @@ public class FleshCollectible : Collectible
         {
             if (((1 << i) & _ignoreLayer.value) != 0)
             {
-                Debug.Log("Ignore " +  LayerMask.LayerToName(i));
                 Physics2D.IgnoreLayerCollision(currentLayer, i, true);
             }
         }
@@ -69,7 +68,6 @@ public class FleshCollectible : Collectible
         {
             if (((1 << i) & _ignoreLayer.value) != 0)
             {
-                Debug.Log("Un-Ignore " +  LayerMask.LayerToName(i));
                 Physics2D.IgnoreLayerCollision(currentLayer, i, false);
             }
         }

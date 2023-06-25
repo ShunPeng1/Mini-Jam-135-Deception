@@ -12,4 +12,5 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     public int FleshCollectibleCount = 0;
     public int FleshCollectibleRequirement = 0;
     
+    
 }
