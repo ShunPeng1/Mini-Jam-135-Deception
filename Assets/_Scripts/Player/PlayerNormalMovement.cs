@@ -62,7 +62,9 @@ public class PlayerNormalMovement : MonoBehaviour
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
 		_collider2D = GetComponent<Collider2D>();
-		NormalStateMachine.OnKillPlayer += StopRun;
+		
+		NormalStateMachine.OnKillPlayer += Die;
+		GhostStateMachine.OnRevivePlayer += Revive;
 	}
 
 	private void Start()
@@ -227,12 +229,17 @@ public class PlayerNormalMovement : MonoBehaviour
 			Slide();
     }
 
-	private void StopRun()
+	private void Die()
 	{
 		this.enabled = false;
 		MoveInput = Vector2.zero; 
 		_rigidbody2D.velocity = Vector2.zero;
-		
+	}
+
+	private void Revive()
+	{
+		this.enabled = true; 
+		MoveInput = Vector2.right;
 	}
 	
     private void OnCollisionEnter2D(Collision2D other)

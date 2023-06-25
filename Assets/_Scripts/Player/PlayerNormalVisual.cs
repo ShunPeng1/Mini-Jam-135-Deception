@@ -24,6 +24,7 @@ public class PlayerNormalVisual : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         NormalStateMachine.OnKillPlayer += DeadAnimation;
+        GhostStateMachine.OnRevivePlayer += ReviveAnimation;
     }
 
     // Update is called once per frame
@@ -43,6 +44,11 @@ public class PlayerNormalVisual : MonoBehaviour
         _animator.SetBool(IsDead, true);
     }
     
+    private void ReviveAnimation()
+    {
+        _animator.SetBool(IsDead, false);
+    }
+
     private void Explode()
     {
         for (int i = 0; i < _fragmentCount; ++i)
@@ -58,4 +64,5 @@ public class PlayerNormalVisual : MonoBehaviour
             fragmentRigidbody.AddForce(randomDirection * _explosionForce, ForceMode2D.Impulse);
         }
     }
+    
 }

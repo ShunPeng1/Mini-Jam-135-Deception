@@ -6,8 +6,12 @@ using UnityEngine;
 
 public class PlayerGhostHealth : MonoBehaviour
 {
-   
-    
+    [Header("Flesh Collectibles")]
+    [SerializeField] private int _fleshCollectibleRequirement = 0;
+    [SerializeField] private float _playerCheckRange = 1f;
+    private int _fleshCollectibleCount = 0;
+
+
     [SerializeField] private float _maxHealthTimer = 1f;
     private float _currentHealthTimer;
     private int _lightEnteringCounter = 0;
@@ -27,6 +31,8 @@ public class PlayerGhostHealth : MonoBehaviour
                 GhostStateMachine.OnKillPlayer.Invoke();
             }
         }
+
+        CheckPlayerRevival();
     }
 
     public void EnterLight()
@@ -38,5 +44,26 @@ public class PlayerGhostHealth : MonoBehaviour
     {
         _lightEnteringCounter--;
         if (_lightEnteringCounter == 0) IsHurt = false;
+    }
+
+    public void AddFlesh()
+    {
+        _fleshCollectibleCount++;
+    }
+
+    private void CheckPlayerRevival()
+    {
+        if(Vector3.Distance( DataManager.Instance.PlayerNormalMovement.transform.position, transform.position) > _playerCheckRange) return;
+
+        if (_fleshCollectibleCount < _fleshCollectibleRequirement) return;
+        
+        GhostStateMachine.OnRevivePlayer.Invoke();
+        _fleshCollectibleCount = 0;
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, _playerCheckRange);
     }
 }

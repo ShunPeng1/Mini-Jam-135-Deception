@@ -64,12 +64,16 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     
     public void RevivePlayer()
     {
-        DataManager.Instance.FleshCollectibleCount = 0;
-        
+        foreach (var pair in _currentActivatablePairs)
+        { 
+            pair.SpikeActivatable.SetActiveActivatable(false);
+        }
+
         GameManager.Instance.SetToState(GameStateEnum.NormalState, null,  new []
         {
             _currentActivatablePairs, // swap current and last
             _lastActivatablePairs
         });
     }
+    
 }
