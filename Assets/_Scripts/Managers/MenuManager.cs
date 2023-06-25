@@ -28,6 +28,10 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void Credit()
+    {
+        SceneManager.LoadScene("Credit");
+    }
     public void PlayButtonSound()
     {
         SoundManager.instance.PlaySound(ButtonClip);
