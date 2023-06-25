@@ -19,17 +19,20 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     {
         OnWallCollide += NextCycle;
         OnRevivePlayer += RevivePlayer;
+        
         AddToFunctionQueue(InitActivatable, StateEvent.OnEnter);
         AddToFunctionQueue(InitGhostPlayer, StateEvent.OnEnter);
     }
 
     void InitGhostPlayer(GameStateEnum newState, object [] enterParameters)
     {
-        DataManager.Instance.PlayerGhostMovement.gameObject.SetActive(true);
-        DataManager.Instance.PlayerGhostMovement.enabled = true;
-
+        PlayerGhostMovement playerGhostMovement = DataManager.Instance.PlayerGhostMovement;
+        PlayerNormalMovement playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
+        playerGhostMovement.gameObject.SetActive(true);
+        playerGhostMovement.enabled = true;
+        playerGhostMovement.transform.position = playerNormalMovement.transform.position;
     }
-    
+
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
     {
         if (enterParameters == null) return;

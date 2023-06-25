@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class PlayerGhostVisual : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         GhostStateMachine.OnKillPlayer += DeadAnimation;
+    }
+
+    private void Start()
+    {
+        
     }
 
     // Update is called once per frame
