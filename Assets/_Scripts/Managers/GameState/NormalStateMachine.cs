@@ -13,8 +13,12 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
     private List<MapManager.ActivatablePair> _lastActivatablePairs = new ();
 
+    private PlayerNormalMovement _playerNormalMovement;
+    private bool _isWaitForInput = false;
     private void Start()
     {
+        _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
+        
         OnWallCollide += NextCycle;
         OnKillPlayer += KillPlayer;
         NextCycle();
@@ -24,10 +28,19 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _isWaitForInput)
+        {
+            _playerNormalMovement.Unfreeze();
+            _isWaitForInput = false;
+        }
+    }
+    
     void InitNormalPlayer(GameStateEnum newState, object [] enterParameters)
     {
-        DataManager.Instance.PlayerNormalMovement.gameObject.SetActive(true);
-        DataManager.Instance.PlayerNormalMovement.enabled = true;
+        _playerNormalMovement.Freeze();
+        _isWaitForInput = true;
     }
 
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
@@ -65,7 +78,8 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
     }
 
     public void KillPlayer()
-    {
+    {       
+        
         foreach (var pair in _currentActivatablePairs)
         { 
             pair.LightActivatable.SetActiveActivatable(false);

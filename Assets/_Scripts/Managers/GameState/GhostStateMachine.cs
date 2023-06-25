@@ -15,22 +15,35 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     private List<MapManager.ActivatablePair> _currentActivatablePairs = new ();
     private List<MapManager.ActivatablePair> _lastActivatablePairs = new ();
 
+    private PlayerGhostMovement _playerGhostMovement;
+    private PlayerNormalMovement _playerNormalMovement;
+    private bool _isWaitForInput = false; 
     private void Start()
     {
+        _playerGhostMovement = DataManager.Instance.PlayerGhostMovement;
+        _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
+        
         OnWallCollide += NextCycle;
         OnRevivePlayer += RevivePlayer;
         
         AddToFunctionQueue(InitActivatable, StateEvent.OnEnter);
         AddToFunctionQueue(InitGhostPlayer, StateEvent.OnEnter);
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _isWaitForInput)
+        {
+            _playerGhostMovement.Unfreeze();
+            _isWaitForInput = false;
+        }
+    }
 
     void InitGhostPlayer(GameStateEnum newState, object [] enterParameters)
     {
-        PlayerGhostMovement playerGhostMovement = DataManager.Instance.PlayerGhostMovement;
-        PlayerNormalMovement playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
-        playerGhostMovement.gameObject.SetActive(true);
-        playerGhostMovement.enabled = true;
-        playerGhostMovement.transform.position = playerNormalMovement.transform.position;
+        _playerGhostMovement.gameObject.SetActive(true);
+        _playerGhostMovement.Freeze();
+        _playerGhostMovement.transform.position = _playerNormalMovement.transform.position;
+        _isWaitForInput = true;
     }
 
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
@@ -64,8 +77,8 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
         _lastActivatablePairs = _currentActivatablePairs;
         _currentActivatablePairs = nextActivatablePairs;
     }
-    
-    public void RevivePlayer()
+
+    private void RevivePlayer()
     {
         foreach (var pair in _currentActivatablePairs)
         { 

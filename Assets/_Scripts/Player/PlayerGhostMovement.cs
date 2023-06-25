@@ -66,7 +66,7 @@ public class PlayerGhostMovement : MonoBehaviour
     private void Start()
     {
         SetGravityScale(runJumpData.gravityScale);
-        _moveInput.x = 1;
+
         IsFacingRight = true;
     }
 
@@ -163,6 +163,22 @@ public class PlayerGhostMovement : MonoBehaviour
         if (IsSliding)
             Slide();
     }
+
+    public void Freeze()
+    {
+        Rigidbody2D.bodyType = RigidbodyType2D.Static;
+        _moveInput.x = 0;
+        
+    }
+    
+    public void Unfreeze()
+    {
+        Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        _moveInput.x = 1;
+        IsFacingRight = true;
+        CheckDirectionToFace(_moveInput.x > 0);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {

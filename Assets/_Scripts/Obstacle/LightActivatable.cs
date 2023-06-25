@@ -70,7 +70,7 @@ public class LightActivatable : Activatable
     protected override void Inactive()
     {
         _light2D.intensity = 1;
-        DOTween.To(() => _light2D.intensity, x => _light2D.intensity = x, 0, _turnOnDuration);
+        DOTween.To(() => _light2D.intensity, x => _light2D.intensity = x, 0, _turnOffDuration);
         _polygonCollider2D.enabled = false;
     }
 

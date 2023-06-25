@@ -65,12 +65,12 @@ public class PlayerNormalMovement : MonoBehaviour
 		
 		NormalStateMachine.OnKillPlayer += Die;
 		GhostStateMachine.OnRevivePlayer += Revive;
+		
 	}
 
 	private void Start()
 	{
 		SetGravityScale(runJumpData.gravityScale);
-		MoveInput.x = 1;
 		IsFacingRight = true;
 	}
 
@@ -229,6 +229,17 @@ public class PlayerNormalMovement : MonoBehaviour
 			Slide();
     }
 
+	public void Freeze()
+	{
+		MoveInput.x = 0;
+	}
+	public void Unfreeze()
+	{
+		MoveInput.x = 1;
+		IsFacingRight = true;
+		CheckDirectionToFace(MoveInput.x > 0);
+	}
+	
 	private void Die()
 	{
 		this.enabled = false;
@@ -241,8 +252,8 @@ public class PlayerNormalMovement : MonoBehaviour
 		this.enabled = true; 
 		MoveInput = Vector2.right;
 	}
-	
-    private void OnCollisionEnter2D(Collision2D other)
+
+	private void OnCollisionEnter2D(Collision2D other)
     {
 	    // Check if the other object's layer is included in the LayerMask
 	    if (_wallLayer == (_wallLayer | (1 << other.gameObject.layer)))

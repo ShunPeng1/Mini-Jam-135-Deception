@@ -12,10 +12,7 @@ public class SpikeActivatable : Activatable
     [SerializeField] private float _goUpDuration = 0.5f, _goDownDuration = 0.5f;
     [SerializeField] private Ease _goUpEase, _goDownEase; 
     
-    private void Start()
-    {
-        Inactive();
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,6 +37,5 @@ public class SpikeActivatable : Activatable
         transform.localScale = new Vector3(1,1,0);
         transform.DOScaleY(0, _goDownDuration).SetEase(_goDownEase)
             .OnComplete(()=> gameObject.SetActive(false));
-
     }
 }
