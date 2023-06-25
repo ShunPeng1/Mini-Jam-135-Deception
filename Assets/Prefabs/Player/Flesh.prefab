@@ -194,5 +194,5 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 0}
   _ignoreLayer:
     serializedVersion: 2
-    m_Bits: 6656
+    m_Bits: 2560
   _ignoreCollisionDuration: 1

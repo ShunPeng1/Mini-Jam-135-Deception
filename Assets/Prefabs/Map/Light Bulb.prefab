@@ -117,7 +117,7 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 0.4
+  m_ShadowIntensity: 0.7
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:
@@ -213,3 +213,5 @@ MonoBehaviour:
   _triggerLayerMask:
     serializedVersion: 2
     m_Bits: 2112
+  _turnOnDuration: 0.3
+  _turnOffDuration: 0.15

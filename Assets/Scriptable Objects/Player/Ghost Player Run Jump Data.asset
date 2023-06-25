@@ -12,25 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad6af110802fb04a89d5ccbb5ff4e3c, type: 3}
   m_Name: Ghost Player Run Jump Data
   m_EditorClassIdentifier: 
-  gravityStrength: -40
-  gravityScale: 4.0774717
+  gravityStrength: -32
+  gravityScale: 3.2619774
   fallGravityMult: 1
   maxFallSpeed: 100
   fastFallGravityMult: 1
   maxFastFallSpeed: 100
-  runMaxSpeed: 9
-  runAcceleration: 9
+  runMaxSpeed: 8.5
+  runAcceleration: 8.5
   runAccelAmount: 50
-  runDecceleration: 9
+  runDecceleration: 8.5
   runDeccelAmount: 50
   accelInAir: 1
   deccelInAir: 1
   doConserveMomentum: 0
-  jumpHeight: 5
+  jumpHeight: 4
   jumpTimeToApex: 0.5
-  jumpForce: 20
+  jumpForce: 16
   jumpCutGravityMult: 1
-  jumpHangGravityMult: 0.3
+  jumpHangGravityMult: 1
   jumpHangTimeThreshold: 1.5
   jumpHangAccelerationMult: 1
   jumpHangMaxSpeedMult: 1
