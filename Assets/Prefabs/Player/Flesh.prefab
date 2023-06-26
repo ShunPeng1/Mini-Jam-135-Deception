@@ -189,7 +189,7 @@ MonoBehaviour:
   _collectorTag: Ghost
   _point: 0
   _animator: {fileID: 0}
-  _collectSoundEffect: {fileID: 0}
+  _collectSoundEffect: {fileID: 8300000, guid: b3a0b4342e0cc6c47ae32b0230916d6f, type: 3}
   _rigidbody2D: {fileID: 0}
   _circleCollider2D: {fileID: 0}
   _spriteRenderer: {fileID: 0}

@@ -23,6 +23,7 @@ public class ScrollCollectible : Collectible
 
     protected override void OnCollect(GameObject player)
     {
+        SoundManager.Instance.PlaySound(_collectSoundEffect);
         DataManager.Instance.AddScroll();
         _fluctuation.Kill();
         this.DestroyCollectible();

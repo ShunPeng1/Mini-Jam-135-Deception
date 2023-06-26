@@ -33,6 +33,7 @@ public class FleshCollectible : Collectible
     }
 
     protected override void OnCollect(GameObject player) {
+        SoundManager.Instance.PlaySound(_collectSoundEffect);
         player.GetComponent<PlayerGhostHealth>().AddFlesh();
         this.DestroyCollectible();
     }

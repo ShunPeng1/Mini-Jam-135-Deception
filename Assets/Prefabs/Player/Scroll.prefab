@@ -118,7 +118,7 @@ MonoBehaviour:
   _collectorTag: Player
   _point: 0
   _animator: {fileID: 0}
-  _collectSoundEffect: {fileID: 0}
+  _collectSoundEffect: {fileID: 8300000, guid: 23f8d26f019aa9e429ac95266e54c21d, type: 3}
   _spriteRenderer: {fileID: 0}
   _yIdleFluctuation: 1
   _fluctuationDuration: 1
