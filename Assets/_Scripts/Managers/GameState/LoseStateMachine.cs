@@ -13,7 +13,7 @@ namespace _Scripts.Managers.GameState
         [SerializeField] private float _delayAppearDuration = 1f, _appearDuration = 1f;
         [SerializeField] private Ease _appearEase;
 
-        private void Start()
+        private void Awake()
         {
             AddToFunctionQueue(AppearUI, StateEvent.OnEnter);
         }

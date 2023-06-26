@@ -18,7 +18,7 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
     private PlayerGhostMovement _playerGhostMovement;
     private PlayerNormalMovement _playerNormalMovement;
     private bool _isWaitForInput = false; 
-    private void Start()
+    private void Awake()
     {
         _playerGhostMovement = DataManager.Instance.PlayerGhostMovement;
         _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;

@@ -15,7 +15,7 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
     private PlayerNormalMovement _playerNormalMovement;
     private bool _isWaitForInput = false;
-    private void Start()
+    private void Awake()
     {
         _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
         
