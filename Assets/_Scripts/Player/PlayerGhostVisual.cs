@@ -24,7 +24,7 @@ public class PlayerGhostVisual : MonoBehaviour
         _playerGhostHealth = GetComponent<PlayerGhostHealth>();
         _animator = GetComponent<Animator>();
 
-        GhostStateMachine.OnKillPlayer += DeadAnimation;
+        GhostStateMachine.OnKillGhost += DeadAnimation;
     }
 
     private void Start()
@@ -56,5 +56,10 @@ public class PlayerGhostVisual : MonoBehaviour
     {
         _animator.SetBool(IsDead, true);
     }
-    
+
+    public void DestroyAnimation()
+    {
+        Destroy(gameObject);        
+    }
+
 }

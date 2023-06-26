@@ -10,8 +10,7 @@ public class SpikeActivatable : Activatable
 {
     [SerializeField] private LayerMask _triggerLayerMask;
     [SerializeField] private float _goUpDuration = 0.5f, _goDownDuration = 0.5f;
-    [SerializeField] private Ease _goUpEase, _goDownEase; 
-    
+    [SerializeField] private Ease _goUpEase, _goDownEase;
     
 
     private void OnTriggerEnter2D(Collider2D other)

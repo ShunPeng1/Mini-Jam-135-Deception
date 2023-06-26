@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerGhostHealth : MonoBehaviour
 {
     [Header("Flesh Collectibles")]
-    [SerializeField] private int _fleshCollectibleRequirement = 0;
+    [SerializeField] private int _fleshCollectibleRequirement = 14;
     [SerializeField] private float _playerCheckRange = 1f;
     private int _fleshCollectibleCount = 0;
 
@@ -28,7 +28,8 @@ public class PlayerGhostHealth : MonoBehaviour
             
             if (_currentHealthTimer >= _maxHealthTimer)
             {
-                GhostStateMachine.OnKillPlayer.Invoke();
+                GhostStateMachine.OnKillGhost.Invoke();
+                _lightEnteringCounter = 0;
             }
         }
 

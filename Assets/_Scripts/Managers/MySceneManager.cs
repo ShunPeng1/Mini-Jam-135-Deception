@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityUtilities;
 
-public class MenuManager : SingletonMonoBehaviour<MenuManager>
+public class MySceneManager : SingletonMonoBehaviour<MySceneManager>
 {
-    [SerializeField] private AudioClip ButtonClip;
+    [SerializeField] private AudioClip _buttonClip;
     public void StartGame()
     {
         SceneManager.LoadScene("Thuan Testing");
@@ -30,6 +30,6 @@ public class MenuManager : SingletonMonoBehaviour<MenuManager>
     }
     public void PlayButtonSound()
     {
-        SoundManager.Instance.PlaySound(ButtonClip);
+        SoundManager.Instance.PlaySound(_buttonClip);
     }
 }
