@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerNormalVisual : MonoBehaviour
 {
@@ -26,7 +28,10 @@ public class PlayerNormalVisual : MonoBehaviour
     {
         _playerNormalMovement = GetComponent<PlayerNormalMovement>();
         _animator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         NormalStateMachine.OnKillPlayer += DeadAnimation;
         GhostStateMachine.OnRevivePlayer += ReviveAnimation;
     }

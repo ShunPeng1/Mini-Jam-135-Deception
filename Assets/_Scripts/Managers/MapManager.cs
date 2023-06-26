@@ -39,23 +39,9 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     [SerializeField] private List<ActivatableSampleFrequency> _activatableSampleFrequencies;
     [SerializeField] private Transform [] _scrollSpawnPoints;
     private RandomBag<Transform> _scrollSpawnPointBag;
-    private List<ActivatablePair> _allActivatablePairs = new ();
     
-    private void OnValidate()
-    {
-        foreach (var activatableRegion in _activatableRegions)
-        {
-            if (activatableRegion != null)
-            {
-                foreach (var activatablePair in activatableRegion.Activatables)
-                {
-                    _allActivatablePairs.Add(activatablePair);
-                }
-            }
-        }
-    }
 
-    private void Start()
+    private void Awake()
     {
         DataManager.Instance.OnScrollChange += SpawnScroll;
         _scrollSpawnPointBag = new RandomBag<Transform>(_scrollSpawnPoints, 1);

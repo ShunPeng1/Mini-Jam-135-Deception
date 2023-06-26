@@ -18,6 +18,11 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
     private void Awake()
     {
         _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
+        _currentActivatablePairs = new ();
+        _lastActivatablePairs = new ();
+
+        OnWallCollide = null;
+        OnKillPlayer = null;
         
         OnWallCollide += NextCycle;
         OnKillPlayer += KillPlayer;
@@ -48,7 +53,12 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
 
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
     {
-        if (enterParameters == null) return;
+        if (enterParameters == null)
+        {
+            _lastActivatablePairs = new();
+            _currentActivatablePairs = new();
+            return;
+        }
 
         _lastActivatablePairs = enterParameters[0] as List<MapManager.ActivatablePair>;
         _currentActivatablePairs = enterParameters[1] as List<MapManager.ActivatablePair>;
@@ -61,7 +71,6 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
         foreach (var pair in _lastActivatablePairs)
         {
             if(!_currentActivatablePairs.Contains(pair)) pair.SpikeActivatable.SetActiveActivatable(false);
-            if(!nextActivatablePairs.Contains(pair)) pair.LightActivatable.SetActiveActivatable(false);
         }
 
         foreach (var pair in nextActivatablePairs)

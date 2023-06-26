@@ -24,12 +24,11 @@ public class PlayerGhostVisual : MonoBehaviour
         _playerGhostHealth = GetComponent<PlayerGhostHealth>();
         _animator = GetComponent<Animator>();
 
-        GhostStateMachine.OnKillGhost += DeadAnimation;
     }
 
     private void Start()
     {
-        
+        GhostStateMachine.OnKillGhost += DeadAnimation;
     }
 
     // Update is called once per frame

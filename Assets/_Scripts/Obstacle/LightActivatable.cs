@@ -19,7 +19,7 @@ public class LightActivatable : Activatable
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _light2D = GetComponent<Light2D>();

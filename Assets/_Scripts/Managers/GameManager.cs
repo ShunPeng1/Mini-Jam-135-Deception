@@ -23,8 +23,8 @@ namespace _Scripts.Managers
             {
                 AddState(stateMachine.MyStateEnum, stateMachine);
             }
-            
-            StartCoroutine(CurrentStateMachine.OnEnterState(CurrentStateMachine.MyStateEnum, null));
+
+            StartCoroutine(CurrentStateMachine.OnEnterState(CurrentStateMachine.MyStateEnum));
             
         }
 

@@ -63,15 +63,15 @@ public class PlayerNormalMovement : MonoBehaviour
 		_rigidbody2D = GetComponent<Rigidbody2D>();
 		_collider2D = GetComponent<Collider2D>();
 		
-		NormalStateMachine.OnKillPlayer += Die;
-		GhostStateMachine.OnRevivePlayer += Revive;
-		
 	}
 
 	private void Start()
 	{
 		SetGravityScale(runJumpData.gravityScale);
 		IsFacingRight = true;
+		
+		NormalStateMachine.OnKillPlayer += Die;
+		GhostStateMachine.OnRevivePlayer += Revive;
 	}
 
 	private void Update()

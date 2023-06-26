@@ -23,6 +23,13 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
         _playerGhostMovement = DataManager.Instance.PlayerGhostMovement;
         _playerNormalMovement = DataManager.Instance.PlayerNormalMovement;
         
+        _currentActivatablePairs = new ();
+        _lastActivatablePairs = new ();
+        
+        OnWallCollide = null;
+        OnKillGhost = null;
+        OnRevivePlayer = null;
+        
         OnWallCollide += NextCycle;
         OnRevivePlayer += RevivePlayer;
         OnKillGhost += KillGhost;
@@ -49,7 +56,12 @@ public class GhostStateMachine : StateMachine<GhostStateMachine, GameStateEnum>
 
     void InitActivatable(GameStateEnum lastState, object[] enterParameters)
     {
-        if (enterParameters == null) return;
+        if (enterParameters == null)
+        {
+            _lastActivatablePairs = new();
+            _currentActivatablePairs = new();
+            return;
+        }
 
         _lastActivatablePairs = enterParameters[0] as List<MapManager.ActivatablePair>;
         _currentActivatablePairs = enterParameters[1] as List<MapManager.ActivatablePair>;
