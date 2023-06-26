@@ -311,6 +311,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3934262329533124949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3630331796469623545}
+  - component: {fileID: 2697906682753454423}
+  m_Layer: 0
+  m_Name: Ui Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3630331796469623545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934262329533124949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4865566988220015784}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2697906682753454423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934262329533124949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4481a499b44d8f84acb3e21880dd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollText: {fileID: 0}
+  _loseScrollText: {fileID: 0}
 --- !u!1 &4271947806764446118
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNormalMovement: {fileID: 0}
   PlayerGhostMovement: {fileID: 0}
+  ScrollCount: 0
 --- !u!1 &4865566988220015791
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +437,7 @@ Transform:
   - {fileID: 5138085164054532574}
   - {fileID: 6918321686919710798}
   - {fileID: 1600223538}
+  - {fileID: 3630331796469623545}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -681,5 +729,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyStateEnum: 5
   _canvasGroup: {fileID: 0}
+  _delayAppearDuration: 1
   _appearDuration: 1
   _appearEase: 9

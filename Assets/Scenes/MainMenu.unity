@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97a734355d20d7499a4c07f421d3f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonClip: {fileID: 0}
+  _buttonClip: {fileID: 8300000, guid: 3d23393bf82355f44b63a2af8163d2cb, type: 3}
 --- !u!1 &1002909493
 GameObject:
   m_ObjectHideFlags: 0
