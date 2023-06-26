@@ -236,7 +236,6 @@ public class PlayerNormalMovement : MonoBehaviour
 	public void Unfreeze()
 	{
 		MoveInput.x = 1;
-		IsFacingRight = true;
 		CheckDirectionToFace(MoveInput.x > 0);
 	}
 	

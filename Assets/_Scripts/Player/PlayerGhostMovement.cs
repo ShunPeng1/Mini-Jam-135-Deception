@@ -174,8 +174,8 @@ public class PlayerGhostMovement : MonoBehaviour
     public void Unfreeze()
     {
         Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        
         _moveInput.x = 1;
-        IsFacingRight = true;
         CheckDirectionToFace(_moveInput.x > 0);
     }
 

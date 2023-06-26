@@ -387,7 +387,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1334
+  m_InstanceId: 113018
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -417,8 +417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fleshCollectibleRequirement: 14
-  _playerCheckRange: 1
-  _maxHealthTimer: 1
+  _playerCheckRange: 2.5
+  _maxHealthTimer: 2
   IsHurt: 0
 --- !u!1 &7472272091055660437
 GameObject:

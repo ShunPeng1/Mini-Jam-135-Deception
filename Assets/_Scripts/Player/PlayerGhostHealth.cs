@@ -60,6 +60,7 @@ public class PlayerGhostHealth : MonoBehaviour
         
         GhostStateMachine.OnRevivePlayer.Invoke();
         _fleshCollectibleCount = 0;
+        _lightEnteringCounter = 0;
 
         gameObject.SetActive(false);
     }

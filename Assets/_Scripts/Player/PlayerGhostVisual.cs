@@ -34,12 +34,13 @@ public class PlayerGhostVisual : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementAnimation();   
+        MovementAnimation();
+        HurtAnimation();
     }
 
-    public void Hurt()
+    public void HurtAnimation()
     {
-        _animator.SetTrigger(IsHurt);
+        _animator.SetBool(IsHurt, _playerGhostHealth.IsHurt);
     }
     
     private void MovementAnimation()
