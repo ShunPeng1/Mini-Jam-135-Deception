@@ -33,7 +33,10 @@ public class NormalStateMachine : StateMachine<NormalStateMachine,GameStateEnum>
         if (Input.GetKeyDown(KeyCode.Space) && _isWaitForInput)
         {
             _playerNormalMovement.Unfreeze();
+            _playerNormalMovement.MoveInput.x = 1;
             _isWaitForInput = false;
+            
+            
         }
     }
     

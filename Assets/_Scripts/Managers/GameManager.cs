@@ -17,14 +17,15 @@ namespace _Scripts.Managers
     public class GameManager : StateMachineManager<GameManager,GameStateEnum>
     {
         [SerializeField] private List<StateMachine<GameStateEnum>> _stateMachines;
-        private void Awake()
+        private void Start()
         {
             foreach (var stateMachine in _stateMachines)
             {
                 AddState(stateMachine.MyStateEnum, stateMachine);
             }
             
-            StartCoroutine(CurrentStateMachine.OnEnterState());
+            StartCoroutine(CurrentStateMachine.OnEnterState(CurrentStateMachine.MyStateEnum, null));
+            
         }
 
     }

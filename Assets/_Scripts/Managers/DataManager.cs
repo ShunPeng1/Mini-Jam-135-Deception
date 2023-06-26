@@ -11,11 +11,11 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
 
     public Action OnScrollChange; 
     
-    private int _scrollCount = 0;
+    public int ScrollCount = 0;
 
     public void AddScroll()
     {
-        _scrollCount++;
+        ScrollCount++;
         OnScrollChange.Invoke();
     }
 }

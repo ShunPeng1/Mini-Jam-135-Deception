@@ -74,7 +74,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         int willActivatableCount = GenerateActivatableCount(_currentCycle);
         
 
-        ActivatablePair[] willActivatablesArray = new ActivatablePair[_allActivatablePairs.Count - _activatableRegions.Count];
+        ActivatablePair[] willActivatablesArray = new ActivatablePair[5];
         
         int currentBagIndex = 0;
         foreach (var region in _activatableRegions)
